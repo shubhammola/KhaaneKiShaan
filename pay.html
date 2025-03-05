@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/e3bb8bcf2d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="description" content="Pay your bill in your own convenient way.!">
+    <link rel="preload" href="img/pay.jpg" as="image">
+    <title>Pay your bill here!</title>
+    <style>
+        .nav-item{
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+
+        .nav-flex-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            position: absolute;
+            z-index: 100;
+            left: 0;
+            width: 100%;
+            padding: 0;
+        }
+
+        .nav-flex-row li {
+            text-decoration: none;
+            list-style-type: none;
+            padding: 20px 15px;
+        }
+
+        .nav-flex-row li a {
+            font-family: 'Big Shoulders Text', cursive;
+            color: #ffffff;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Payment section styles */
+        .payment-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(img/pay.jpg);
+            background-size: cover;
+            color: white;
+            padding: 100px 0; /* Increase padding for more space on smaller screens */
+        }
+
+        .payment-content {
+            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .pay-text{
+            flex-grow: 1;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .payment-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pay-text {
+                width: fit-content;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .payment-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pay-text{
+                width: fit-content;
+            }
+        }
+
+        .table {
+            padding: 50px 0;
+            background-color: #ffe97d;
+        }
+
+        /* CSS for Table Cards */
+        .table-card {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f7f7f7; /* Card background color */
+            transition: background-color 0.3s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        .table-card:hover {
+            background-color: #cebeb8; /* Change background color on hover */
+        }
+
+        .table-card h2 {
+            font-size: 24px;
+            color: #333; /* Card title color */
+        }
+
+        .fa-utensils {
+            font-size: 36px;
+            color: #f8a100; /* Icon color */
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .table-card {
+                margin-right: 0;
+            }
+        }
+
+        /* The Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Close button */
+        .modal-content button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .pay-image {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .feedback-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .emoji-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 62px;
+            margin-top: 20px;
+        }
+
+        .emoji {
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+
+        /* Add hover effect to scale the emoji on hover */
+        .emoji:hover {
+            transform: scale(1.2);
+        }
+
+        .emoji-label {
+            display: block;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        /* Hidden by default, shown after feedback */
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+            function displayDetails(tableNo, payImg, chefName, waiterName) {
+            var modal = document.getElementById("myModal");
+            var modalContent = modal.querySelector(".modal-content");
+
+            // Create content for the modal
+            var modalContentHTML = `
+                <h2>${tableNo}</h2>
+                <img src="${payImg}" class="pay-image">
+                <p>Your meal was cooked by: ${chefName}</p>
+                <p>Served By: ${waiterName}</p>
+                <button onclick="hideDetails()">Done</button>
+            `;
+
+            // Set the content to the modal
+            modalContent.innerHTML = modalContentHTML;
+
+            // Display the modal
+            modal.style.display = "block";
+        }
+
+        function hideDetails() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+            var modalContent = modal.querySelector(".modal-content");
+            modalContent.innerHTML = ""; // Clear the modal content
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul class="nav-flex-row">
+            <li class="nav-item">
+                <a href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="menu.html">Specialties</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact.html">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="payment-section">
+        <div class="payment-content">
+            <div class="pay-text">
+                <h2>Pay Your Bill Here!</h2>
+                <p>
+                    Thank you for dining with us at Khaane-ki-Shaan! We appreciate your visit and want to make settling your bill as convenient as possible. Please follow these steps to complete your payment:
+                </p>
+                <ol>
+                    <li>Select your respective table number.</li>
+                    <li>Scan the QR code displayed from your mobile.</li>
+                    <li>Please be sure to enter the correct amount or always feel free to take help from our representative.</li>
+                    <li>Choose from our wide variety of payment options, including UPI, Scan and Pay, credit or debit card, net banking, or simply hand over exact cash amount to our representative.</li>
+                    <li>Feel free to tip our staff heartfully. Their dedication and service have been exceptional.</li>
+                    <li>Find details of the honourable chef and the respected waiter served at your table number.</li>
+                    <li>Lastly, please take a moment to rate our service. Your feedback is valuable and helps us improve.</li>
+                </ol>
+                <p>
+                    Thank you for giving us the honor of serving you. We look forward to welcoming you back on your next visit! Have a fantastic day, and enjoy your meal!
+                </p>
+                <p>
+                    Shukraan Fooddddieeeeeee!
+                </p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="table">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 1', 'img/qr.jpg' ,'Chef Vikas Khanna', 'Rahul')">
+                        <h2>Table No: 1</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 2', 'img/qr.jpg' ,'Chef Kunal Kapur', 'Krishna')">
+                        <h2>Table No: 2</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 3', 'img/qr.jpg' ,'Chef Sanjeev Kapoor', 'Rahul')">
+                        <h2>Table No: 3</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 4', 'img/qr.jpg' ,'Chef Ranveer Brar', 'Rishab')">
+                        <h2>Table No: 4</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 5', 'img/qr.jpg' ,'Chef Vikas Khanna', 'Virat')">
+                        <h2>Table No: 5</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 6', 'img/qr.jpg' ,'Chef Kunal Kapur', 'Virat')">
+                        <h2>Table No: 6</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 7', 'img/qr.jpg' ,'Chef Sanjeev Kapoor', 'Virat')">
+                        <h2>Table No: 7</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 8', 'img/qr.jpg' ,'Chef Ranveer Brar', 'Sameer')">
+                        <h2>Table No: 8</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 9', 'img/qr.jpg' ,'Chef Vikas Khanna', 'Sameer')">
+                        <h2>Table No: 9</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 10', 'img/qr.jpg' ,'Chef Kunal Kapur', 'Krishna')">
+                        <h2>Table No: 10</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 11', 'img/qr.jpg' ,'Chef Sanjeev Kapoor', 'Jasprit')">
+                        <h2>Table No: 11</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="table-card" onclick="displayDetails('Table No: 12', 'img/qr.jpg' ,'Chef Ranveer Brar', 'Rishab')">
+                        <h2>Table No: 12</h2>
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="details-container"></div>
+        </div>
+    </section>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content"></div>
+    </div>
+
+    <div class="feedback-section">
+        <h3>How would you rate your experience?</h3>
+        <div class="emoji-container">
+            <div class="emoji" onclick="setFeedback('overall')">
+                <span class="emoji-label">Overall</span>
+                &#128525;
+            </div>
+            <div class="emoji" onclick="setFeedback('food')">
+                <span class="emoji-label">Food</span>
+                &#128523;
+            </div>
+            <div class="emoji" onclick="setFeedback('service')">
+                <span class="emoji-label">Service</span>
+                &#128516;
+            </div>
+            <div class="emoji" onclick="setFeedback('ambiance')">
+                <span class="emoji-label">Ambiance</span>
+                &#10024;
+            </div>
+            <div class="emoji" onclick="setFeedback('value')">
+                <span class="emoji-label">Value</span>
+                &#128526;
+            </div>
+            <div class="emoji" onclick="setFeedback('not')">
+                <span class="emoji-label">Not Satisfied</span>
+                &#128532;
+            </div>
+        </div>
+    </div>
+    <div id="feedback-message" class="hidden text-center">
+        <p>Thank you for your feedback!</p>
+    </div>    
+    
+    <script>
+        // JavaScript function to set feedback and show the feedback message
+        function setFeedback(category) {
+            const emojis = document.querySelectorAll('.emoji');
+            const feedbackMessage = document.getElementById('feedback-message');
+
+            // Reset all emojis to their default size
+            emojis.forEach(emoji => {
+                emoji.style.transform = '';
+            });
+
+            // Enlarge the selected emoji
+            const selectedEmoji = event.target;
+            selectedEmoji.style.transform = 'scale(1.2)';
+
+            // Display feedback message based on the selected category
+            switch (category) {
+                case 'overall':
+                    feedbackMessage.innerHTML = "Excellent! We're thrilled you had a great experience.";
+                    break;
+                case 'food':
+                    feedbackMessage.innerHTML = "Our chefs are thrilled to have satisfied your palate!";
+                    break;
+                case 'service':
+                    feedbackMessage.innerHTML = "We're elated to have served you with a smile!";
+                    break;
+                case 'ambiance':
+                    feedbackMessage.innerHTML = "Thank you! Your comfort is our top priority!";
+                    break;
+                case 'value':
+                    feedbackMessage.innerHTML = "Thank you for your feedback on value!";
+                    break;
+                case 'not':
+                    feedbackMessage.innerHTML = "Sorry to hear that. Give us an another opportunity and let us know where we can improve.";
+                    break;
+                default:
+                    feedbackMessage.innerHTML = "Thank you for your feedback!";
+            }
+
+            // Show the feedback message
+            feedbackMessage.style.display = 'block';
+        }
+    </script>    
+
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="footer" style="text-align: center;">&copy; Khaane-ki-Shaan.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

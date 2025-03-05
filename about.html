@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="index.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="description" content="Know more about us!">
+    <link rel="preload" href="img/chai.jpg" as="image">
+    <title>About Us!</title>
+    <style>
+        .nav-flex-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            position: absolute;
+            z-index: 100;
+            left: 0;
+            width: 100%;
+            padding: 0;
+        }
+
+        .nav-flex-row li {
+            text-decoration: none;
+            list-style-type: none;
+            padding: 20px 15px;
+        }
+
+        .nav-flex-row li a {
+            font-family: 'Big Shoulders Text', cursive;
+            color: #ffffff;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* About section styles */
+        .about-history-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(img/chai.jpg);
+            background-size: cover;
+            color: white;
+            padding: 100px 0; /* Increase padding for more space on smaller screens */
+        }
+
+        .about-history-content {
+            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .about-text, .history-text {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .about-history-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-text, .history-text {
+                width: fit-content;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-history-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-text, .history-text {
+                width: fit-content;
+            }
+        }
+
+        /* Team section styles */
+        .team-section {
+            background-color: #C8E6C9;
+            padding: 50px 0;
+        }
+
+        .team-card {
+            max-width: 250px;
+            text-align: center;
+            margin: 0 auto;
+            background-color: #F2D9BB;
+            padding: 20px;
+            border-radius: 10px;
+            height: 450px;
+        }
+
+        .team-member-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .about {
+                height: auto;
+            }
+
+            .about-text {
+                max-width: 100%;
+            }
+
+            .team-card {
+                max-width: 100%;
+                margin: 10px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-text {
+                padding: 10px;
+            }
+
+            .team-card {
+                padding: 10px;
+                margin: 10px;
+            }
+
+            .team-card h4 {
+                font-size: 20px;
+            }
+        }
+    </style>
+    <script>
+        function validation(){
+            var name=document.getElementById("name").value;
+            var phone=document.getElementById("number").value;
+            alert("We will get back to you soon!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul class="nav-flex-row">
+            <li class="nav-item">
+                <a href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="menu.html">Specialties</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact.html">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="about-history-section">
+        <div class="about-history-content">
+            <div class="about-text">
+                <h2>About Us!</h2>
+                <p>
+                    At Khaane-ki-Shaan, we take immense pride in offering a dining experience that transcends the ordinary. Our restaurant is not just a place to eat; it's a celebration of flavors, aromas, and culture. Step into our world, where every dish is an artistic masterpiece crafted with passion and precision.
+                Our journey began with a vision to create a culinary haven that showcases the rich and diverse heritage of Indian cuisine. From the bustling streets of Mumbai to the royal kitchens of Rajasthan, we have curated a menu that presents the finest culinary treasures from every corner of India.
+                Our team of highly skilled chefs brings decades of experience and a genuine love for cooking to your table. They skillfully blend traditional recipes with contemporary techniques, resulting in dishes that are both nostalgic and innovative.
+                Beyond the delectable food, our warm and inviting ambiance sets the stage for a memorable dining experience. Whether you're celebrating a special occasion, enjoying a family gathering, or simply savoring a quiet meal, Khaane-ki-Shaan promises an atmosphere that enriches the senses and soothes the soul.
+                We believe that food is not just sustenance; it's a language that speaks to the heart. With every bite you take, allow us to transport you to a world of authentic flavors and culinary delight. Your satisfaction is our utmost priority, and we leave no stone unturned in ensuring that every moment spent at Khaane-ki-Shaan is exceptional.
+                Come join us on this gastronomic journey and discover why Khaane-ki-Shaan is not just a restaurant but an ode to the art of Indian cuisine.
+                </p>
+            </div>
+            <div class="history-text">
+                <h2>Our History</h2>
+                <p>
+                    Khaane-ki-Shaan has a rich history that dates back to 2000 when we as a team embarked on a journey to bring the authentic flavors of India to food enthusiasts. With a vision to create a unique dining experience, he opened the doors of our first restaurant in the heart of Hyderabad.
+                    Over the years, Khaane-ki-Shaan has grown and expanded, earning a reputation for its exquisite dishes, warm hospitality, and commitment to quality. Our passion for culinary excellence has led us to explore the diverse cuisines of India and present them in a way that celebrates tradition and innovation.
+                    Today, our restaurant stands as a testament to the art of Indian cuisine, where every meal is a fusion of flavors, aromas, and culture. We continue to be inspired by the love for food and the joy it brings to people's lives.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2>Meet Our Team:</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="team-card">
+                    <img src="img/image1.jpg" alt="Aanchal" class="team-member-img">
+                    <h4>Aanchal Sisodia</h4>
+                    <p>
+                        Aanchal, our esteemed leader, has always been an avid food enthusiast with a particular interest in traditional Indian recipes. Her guidance is inspirational, illuminating the path to new and exciting flavors for our cherished customers.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-card">
+                    <img src="img/image2.jpeg" alt="Sourabh" class="team-member-img">
+                    <h4>K Sourabh Srivatsa</h4>
+                    <p>
+                        Sourabh's passion for spices and culinary experimentation knows no bounds. As our head chef, he is responsible for creating innovative dishes that tantalize taste buds and leave a lasting impression on our guests.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-card">
+                    <img src="img/image3.jpg" alt="Pulin" class="team-member-img">
+                    <h4>Pulin Pathak</h4>
+                    <p>
+                        Pulin is the master of desserts and sweets. His creations are not just food; they are an expression of art. Pulin's confectionery delights add a touch of sweetness to every dining experience.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-card">
+                    <img src="img/image4.jpg" alt="Shubham" class="team-member-img">
+                    <h4>Shubham Mola</h4>
+                    <p>
+                        Shubham is our restaurant's tech guru and also a food lover. He blends his expertise in technology with his passion for culinary delights to create a seamless dining experience for our customers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row-flex">
+          <div class="flex-column-form">
+            <h3>
+              Make a booking
+            </h3>
+          <form class="media-centered" onsubmit="return validation()">
+              <div class="form-group">
+                <p>
+                  Please leave your number we will call to make a reservation
+                </p>
+                <input type="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter your name">
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" id="number" placeholder="Enter your phone number">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          </div>
+          <div class="opening-time">
+            <h3>
+              Opening times
+            </h3>
+            <p>
+             <span>Monday—Thursday: 08:00 — 22:00</span> 
+             <span>Friday—Saturday: 09:00 — 23:00 </span>
+             <span>Sunday: 10:00 — 17:00</span>
+            </p>
+          </div>
+          <div class="contact-adress">
+            <h3>
+              Contact
+            </h3>
+            <p>
+              <span>Website: <a href="https://khaanekishaan.netlify.app" target="_blank">khaanekishaan.netlify.app</a></span>
+              <span>Mobile No: 9701368975</span>
+              <span>Email: khaanekishaan@gmail.com</span>
+              <span>Address:</span>
+              <span>4-1-105, Sunflower Street,</span>
+              <span>Hyderabad, Telangana</span>
+              <span>500001</span>
+            </p>
+          </div>
+        </div>
+        </div>
+
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="footer" style="text-align: center;">&copy; Khaane-ki-Shaan.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

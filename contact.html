@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="index.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="Please insert your own Google Maps API Link"></script>
+    <meta name="description" content="Reach us at anytime in any convenient way!">
+    <link rel="preload" href="img/contact.jpg" as="image">
+    <title>Contact Us!</title>
+    <style>
+        .nav-flex-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            position: absolute;
+            z-index: 100;
+            left: 0;
+            width: 100%;
+            padding: 0;
+        }
+
+        .nav-flex-row li {
+            text-decoration: none;
+            list-style-type: none;
+            padding: 20px 15px;
+        }
+
+        .nav-flex-row li a {
+            font-family: 'Big Shoulders Text', cursive;
+            color: #ffffff;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(img/contact.jpg);
+            background-size: cover;
+            color: aliceblue;
+            padding: 100px 0; /* Increase padding for more space on smaller screens */
+        }
+
+        .contact-form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form select:focus {
+            border-color: #3498db;
+        }
+    </style>
+    <script>
+        function validation(){
+            var name=document.getElementById("name").value;
+            var phone=document.getElementById("number").value;
+            alert("We will get back to you soon!");
+            return true;
+        }
+
+        function initMap() {
+            var location = {lat: 17.3909299, lng: 78.4801899}; // Replace with your own location coordinates
+            var map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 16
+        });
+            var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+        }
+
+        function validation1() {
+              var name = document.getElementById("name").value;
+              var email = document.getElementById("email").value;
+              var phone = document.getElementById("phone").value;
+              var error_message = document.getElementById("error_message");
+              var text;
+              error_message.style.padding = "10px";
+
+
+              if (name.length < 5) {
+                text = "Please Enter Valid Name";
+                error_message.innerHTML = text;
+                return false;
+              }
+              if (email.indexOf("@") == -1 || email.length < 6) {
+                text = "Please Enter Valid Email";
+                error_message.innerHTML = text;
+                return false;
+              }
+              if (isNaN(phone) || phone.length != 10) {
+                text = "Please Enter Valid Phone Number";
+                error_message.innerHTML = text;
+                return false;
+              } 
+              else {
+                // Replace form_url with your Google Form URL
+                var form_url ="https://docs.google.com/forms/d/e/1FAIpQLSf3DsSTqh2FhFbBP7yuSQBEMYBrLolHQowrsgI8fI9Z5xr5TA/viewform?usp=sf_link";
+                var form_data = {
+                  "entry.1234567890": name,
+                  "entry.0987654321": email,
+                  "entry.2468135790": phone,
+                };
+                var encoded_data = encodeURI(JSON.stringify(form_data));
+                var url = form_url + "&entry=" + encoded_data;
+                window.open(url);
+                return true;
+              }
+            }
+    </script>
+  </head>
+  <body>
+    
+    
+  <nav>
+    <ul class="nav-flex-row">
+      <li class="nav-item">
+        <a href="home.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="about.html">About</a>
+      </li>
+      <li class="nav-item">
+        <a href="menu.html">Specialties</a>
+      </li>
+      <li class="nav-item">
+        <a href="contact.html">Contact Us</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Contact Us:</h2>
+                <p>If you have any questions or inquiries, please feel free to get in touch with us. We're here to assist you!</p>
+                <form onsubmit="return validation1()">
+                    <div id="error_message"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="phone" placeholder="Your Mobile No" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry">Select Inquiry Type:</label>
+                        <select class="form-control" id="inquiry" name="inquiry">
+                            <option value="query">Query</option>
+                            <option value="suggestion">Suggestion</option>
+                            <option value="experience">Share Your Experience</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <h2 style="font-family: 'Big Shoulders Text', cursive;">You are always welcome to order online from our website <a href="https://khaanekishaan.netlify.app" target="_blank">khaanekishaan.netlify.app</a></h2>
+            </div>
+            <div class="col-md-6">
+                <h2>Our Location:</h2>
+                <p>Visit us at our restaurant location. We'd love to have you!</p>
+                <p><strong>Address:</strong> 4-1-105, Sunflower Street, Hyderabad, Telangana, 500001</p>
+                <p><strong>Phone:</strong> 9701368975</p>
+                <p><strong>Email:</strong> khaanekishaan@gmail.com</p>
+                <div id="map" style="height: 300px;"></div>
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEe6YXBMvp-RHj6V3M2vYGyE6GIm91Qnw&callback=initMap"></script>    
+            </div>
+        </div>
+    </div>
+</section>
+
+  <div class="container">
+    <div class="row-flex">
+      <div class="flex-column-form">
+        <h3>
+          Make a booking
+        </h3>
+      <form class="media-centered" onsubmit="return validation()">
+          <div class="form-group">
+            <p>
+              Please leave your number we will call to make a reservation
+            </p>
+            <input type="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control" id="number" placeholder="Enter your phone number">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      </div>
+      <div class="opening-time">
+        <h3>
+          Opening times
+        </h3>
+        <p>
+         <span>Monday—Thursday: 08:00 — 22:00</span> 
+         <span>Friday—Saturday: 09:00 — 23:00 </span>
+         <span>Sunday: 10:00 — 17:00</span>
+        </p>
+      </div>
+      <div class="contact-adress">
+        <h3>
+          Contact
+        </h3>
+        <p>
+          <span>Website: <a href="https://khaanekishaan.netlify.app" target="_blank">khaanekishaan.netlify.app</a></span>
+          <span>Mobile No: 9701368975</span>
+          <span>Email: khaanekishaan@gmail.com</span>
+          <span>Address:</span>
+          <span>4-1-105, Sunflower Street,</span>
+          <span>Hyderabad, Telangana</span>
+          <span>500001</span>
+        </p>
+      </div>
+    </div>
+    </div>
+
+    <footer class="footer mt-5">
+      <div class="container">
+          <div class="row">
+              <div class="col">
+                  <p class="footer" style="text-align: center;">&copy; Khaane-ki-Shaan.</p>
+              </div>
+          </div>
+      </div>
+    </footer>
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+  </body>
+</html> 
