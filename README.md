@@ -16,7 +16,7 @@ Khaane ki Shaan is an imaginary restaurant website designed to provide a seamles
 
 ## Installation & Setup 🚀  
 
-1. Clone the repository: `git clone https://github.com/your-username/KitabGhar.git`
+1. Clone the repository: `git clone https://github.com/your-username/KhaaneKiShaan.git`
 2. Navigate to the project folder: `cd KhaaneKiShaan`
 3. Open `home.html` file on VS Code then Right-click on `home.html` and select `Open with Live Server`
 4. Alternative: Open Manually in a Browser → Locate the `home.html` file in your project folder → Right-click on it and choose `Open With` → `Google Chrome (or any browser)`
